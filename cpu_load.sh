@@ -1,27 +1,38 @@
 #!/bin/bash
 
-# Function to simulate CPU load
-load_cpu() {
-    # This loop performs a simple computation
-    for ((i = 1; i <= 100000000; i++)); do
-        # Just doing some math to keep the CPU busy
-        echo "$i * 1" > /dev/null
-    done
-}
+echo "Starting CPU load simulation"
 
-# Start a number of processes to increase CPU load
-# Here we just start 2 instances to increase the load
-for ((j = 0; j < 2; j++)); do
-    load_cpu &
+# Start CPU load simulation in the background
+for i in {1..50}
+do
+    ( while true; do :; done ) &
 done
 
-echo "Increased CPU load. Press Enter to stop the load..."
 
-# Wait for user to terminate the script
-read
-kill $(jobs -p) 2>/dev/null
-wait
-echo "CPU load stopped."
+# #!/bin/bash
+
+# # Function to simulate CPU load
+# load_cpu() {
+#     # This loop performs a simple computation
+#     for ((i = 1; i <= 100000000; i++)); do
+#         # Just doing some math to keep the CPU busy
+#         echo "$i * 1" > /dev/null
+#     done
+# }
+
+# # Start a number of processes to increase CPU load
+# # Here we just start 2 instances to increase the load
+# for ((j = 0; j < 2; j++)); do
+#     load_cpu &
+# done
+
+# echo "Increased CPU load. Press Enter to stop the load..."
+
+# # Wait for user to terminate the script
+# read
+# kill $(jobs -p) 2>/dev/null
+# wait
+# echo "CPU load stopped."
 
 
 # #!/bin/bash
